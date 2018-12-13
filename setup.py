@@ -18,17 +18,17 @@ REQUIRES = []
 setup(
     name='pyhandlers',
     version=version,
-    description='',
+    description='various utility/helper functions & decorators.',
     long_description=readme,
     author='Bharath G.S',
     author_email='royalkingpin@gmail.com',
     maintainer='Bharath G.S',
     maintainer_email='royalkingpin@gmail.com',
-    url='https://github.com/_/pyhandlers',
+    url='https://github.com/bharathgs/pyhandlers',
     license='MIT',
 
     keywords=[
-        '',
+        'error', 'handlers', 'decorators', 'utility', 'helpers'
     ],
 
     classifiers=[

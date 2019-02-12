@@ -1,6 +1,5 @@
-### WIP
 # pyhandlers
-
+[![Downloads](https://pepy.tech/badge/pyhandlers)](https://pepy.tech/project/pyhandlers)
 -----
 
 **Table of Contents**

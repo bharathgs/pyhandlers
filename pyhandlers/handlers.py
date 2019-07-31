@@ -42,11 +42,9 @@ def error_handler(errors=(Exception, ), default=""):
 
 def deprecation_warnings_handler(function):
     '''This is a decorator which can be used to ignore deprecation warnings occurring in a function.'''
+    @wraps(function)
     def new_function(*args, **kwargs):
         with warnings.catch_warnings():
             warnings.filterwarnings("ignore", category=DeprecationWarning)
             return function(*args, **kwargs)
-    new_function.__name__ = function.__name__
-    new_function.__doc__ = function.__doc__
-    new_function.__dict__.update(function.__dict__)
     return new_function

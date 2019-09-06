@@ -1,7 +1,9 @@
 import warnings
 from functools import wraps
+from collections import namedtuple
 
-__all__ = ["error_handler", "deprecation_warnings_handler"]
+__all__ = ["error_handler", "deprecation_warnings_handler",
+           "to_namedtuple"]
 
 
 def error_handler(errors=(Exception, ), default=""):
@@ -48,3 +50,24 @@ def deprecation_warnings_handler(function):
             warnings.filterwarnings("ignore", category=DeprecationWarning)
             return function(*args, **kwargs)
     return new_function
+
+
+class to_namedtuple:
+    """
+    convienence decorator to convert a multiple return 
+    objects into a namedtuple, from a callable.
+    """
+
+    def __init__(self, name, *args):
+        self.name = name
+        self.args = args
+
+    def __call__(self, f):
+
+        return_type = namedtuple(self.name, self.args)
+
+        def _(*x, **y):
+            return return_type(*f(*x, **y))
+
+        _.return_type = return_type
+        return _
